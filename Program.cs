@@ -1,4 +1,6 @@
 ﻿using System;
+using Microsoft.AspNetCore.Hosting;
+using movingtotheweb;
 
 namespace supermva
 {
@@ -6,10 +8,12 @@ namespace supermva
     {
         static void Main(string[] args)
         {
-            string name;
-            Console.WriteLine("Hello World!");
-            name = Console.ReadLine();
-            Console.WriteLine($"Hello {name}!");
+          var host = new WebHostBuilder()
+              .UseKestrel()
+              .UseStartup<Startup>()
+              .Build();
+
+          host.Run();
         }
     }
 }
